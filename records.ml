@@ -8,6 +8,11 @@ let rbg = {
   year = 1954;
 }
 
+let name_with_year s =
+  match s with
+  | {name; year} -> name ^ " '" ^ string_of_int (year mod 100)
+
+
 (*
 {f1 = 1; f2 = e2}
 is a record with fields names f1 and f2
