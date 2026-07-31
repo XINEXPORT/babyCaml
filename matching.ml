@@ -35,27 +35,22 @@ let b =
   | [] -> ["folklore"]
   | h :: t -> t
 
-let fst3 t =
-  match t with
+let fst3 = function
   | (a,b,c) -> a
 
-let empty lst =
-  match lst with
+let empty = function
   | [] -> true
   | h :: t -> false
 
-let empty lst =
-  match lst with
+let empty  = function
   | [] -> true
   | _ -> false
 
-let rec sum lst =
-  match lst with
+let rec sum = function
   | [] -> 0
   | h :: t -> h + sum t
 
-let rec length lst =
-  match lst with
+let rec length = function
   | [] -> 0
   | h :: t -> 1 + length t
 
@@ -67,3 +62,16 @@ let rec append lst1 lst2 =
   match lst1 with
   | [] -> lst2
   | h :: t -> h :: append t lst2
+
+let bad_empty lst =
+  match lst with
+  | [] -> true
+  | _ -> false
+
+let rec bad_sum lst =
+  match lst with
+   | h :: t -> h + bad_sum t
+   | [] -> 0
+
+let rec bad_sum' lst =
+  List.hd lst + bad_sum' (List.tl lst)
